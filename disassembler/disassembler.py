@@ -32,6 +32,9 @@ def parse(line):
 				"101010":"SLT",
 				}
 	line = pad32(bin(int(line,16)))
+	if line=='00000000000000000000000000000000':
+		return "NOOP"
+		
 	outputLine = opcodeHash[line[0:6]]
 	if outputLine=="RTYPE":
 		outputLine=typesOfR[line[26:32]]
